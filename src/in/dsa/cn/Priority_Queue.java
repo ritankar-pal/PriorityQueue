@@ -40,15 +40,55 @@ public class Priority_Queue<T> {
 		
 	}
 	
+	public T removeMin() {
+		
+		if(isEmpty()) return null;
+		
+		Element<T> minElem = heap.get(0);
+		
+		Element<T> lastElem = heap.get(heap.size()-1);
+		
+		//replacing the first elem with the lastelem of the ArrayList:
+		heap.set(0, lastElem);
+		
+		//removing the last element:
+		heap.remove(heap.size()-1);
+		
+		int parentIndex = 0;
+		int leftChildIndex = (2*parentIndex) + 1;
+		int rightChildIndex = (2*parentIndex) + 2;
+		
+		while(leftChildIndex < heap.size()) {
+			
+			int minIndex = parentIndex;
+			
+			if(heap.get(minIndex).priority > heap.get(leftChildIndex).priority) {
+				minIndex = leftChildIndex;
+			}
+			
+			if(rightChildIndex < heap.size() &&  heap.get(minIndex).priority > heap.get(rightChildIndex).priority) {
+				minIndex = rightChildIndex;
+			}
+			
+			if(minIndex == parentIndex) return minElem.value;
+			
+			Element<T> temp = heap.get(parentIndex);
+			heap.set(parentIndex, heap.get(minIndex));
+			heap.set(minIndex, temp);
+			
+			parentIndex = minIndex;
+			leftChildIndex = (2*parentIndex) + 1;
+			rightChildIndex = (2*parentIndex) + 2;
+		}
+		return minElem.value;
+	}
+	
 	//returns null if the heap is empty:
 	public T getMin() {
 		if(isEmpty()) return null;
 		return heap.get(0).value;
 	}
 	
-	public T removeMin() {
-		return null;
-	}
 	
 	public boolean isEmpty() {
 		if(size() == 0) return true;
