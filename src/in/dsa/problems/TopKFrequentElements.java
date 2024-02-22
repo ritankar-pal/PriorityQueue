@@ -3,6 +3,7 @@ package in.dsa.problems;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
 public class TopKFrequentElements {
@@ -33,11 +34,6 @@ public class TopKFrequentElements {
 				pq.poll();
 			}
 		}
-		
-		while(!pq.isEmpty()) {
-			list.add(pq.poll().getKey());
-		}
-		
 		
 		return list;
 	}

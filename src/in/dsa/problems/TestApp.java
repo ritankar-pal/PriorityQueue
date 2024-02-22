@@ -1,6 +1,7 @@
 package in.dsa.problems;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
 
@@ -22,12 +23,21 @@ public class TestApp {
 //		}
 		
 		
-		TopKFrequentElements elem = new TopKFrequentElements();
+//		TopKFrequentElements elem = new TopKFrequentElements();
+//		
+//		int[] arr = new int[] {1,1,3,3,3,2,2,2,4};
+//		ArrayList<Integer> list = elem.topKFreqElem(arr, 2);
+//		list.forEach(System.out::println);
 		
-		int[] arr = new int[] {1,1,3,3,3,2,2,2,4};
-		ArrayList<Integer> list = elem.topKFreqElem(arr, 2);
-		list.forEach(System.out::println);
 		
+		FrequencySort fs = new FrequencySort();
+		
+		int[] arr = new int[] {1,1,1,2,2,3,3,4,4};
+		ArrayList<Integer> list = fs.sortByFreq(arr);
+		
+		for (Integer i : list) {
+			System.out.print(i + " ");
+		}
 	}
 
 }
